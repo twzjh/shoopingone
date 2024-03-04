@@ -23,7 +23,7 @@ export default {
         iconList,
         iconListGrey,
       },
-      product:[],
+      products:[],
     };
   },
   mounted(){
