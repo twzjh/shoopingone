@@ -23,7 +23,16 @@ export default {
         iconList,
         iconListGrey,
       },
+      product:[],
     };
+  },
+  mounted(){
+    fetch('./src/assets/json/MOCK_DATA.json')
+    .then(respose => respose.json())
+    .then(data => {
+      this.products = data;
+      console.log(this.products);
+    })
   },
   methods: {
 
@@ -48,13 +57,13 @@ export default {
 
     <!-- 卡片式列表 -->
     <section class="flex gap-5 flex-wrap justify-center">
-      <div class="w-1/2 xl:w-1/6 border-[1px] rounded-lg flex flex-col md:w-1/3">
+      <div v-for="(products, index) in products" :key="index" class="w-1/2 xl:w-1/6 border-[1px] rounded-lg flex flex-col md:w-1/3">
         <img class="rounded-t-lg w-full" src="" alt="商品圖片" />
 
         <div class="bg-slate-100 h-[250px] bg-opacity-30 px-3 flex flex-col gap-3 pt-3">
-          <h2>Bytecard</h2>
-          <p>Immunization not carried out because of caregiver refusal</p>
-          <p>價格: 954</p>
+          <h2>{{ products.name }}</h2>
+          <p>{{ products.description }}</p>
+          <p>價格: {{ products.price }}</p>
         </div>
 
         <div class="flex items-center gap-5 mb-5 px-3">
@@ -71,7 +80,7 @@ export default {
     </section>
 
     <!-- 條列式列表 -->
-    <section class="px-32">
+    <!-- <section class="px-32">
       <div class="grid grid-cols-5 border-y font-bold py-1 gap-x-3">
         <div class="text-center">商品圖片</div>
         <div>商品名稱</div>
@@ -96,6 +105,6 @@ export default {
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
   </div>
 </template>
