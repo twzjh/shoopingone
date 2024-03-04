@@ -37,7 +37,7 @@ export default {
           <input type="checkbox" class="w-5" />
         </label>
         <div class="flex justify-center">
-          <img src="" alt="商品圖示" class="w-[100px] h-full object-cover" />
+          <img src="https://fakeimg.pl/300/" alt="商品圖示" class="w-[100px] h-full object-cover" />
         </div>
         <p class="flex items-center">Bytecard</p>
         <p class="flex justify-center items-center">$ 954</p>
@@ -54,9 +54,9 @@ export default {
     </div>
     
     <div class="flex justify-between gap-4 text-white text-2xl font-bold">
-      <button type="button" class="flex justify-center items-center bg-[#8c5046] rounded-md px-4 py-1">
-        回上頁繼續購買
-      </button>
+      <RouterLink to="/" class="flex justify-center items-center bg-[#8c5046] rounded-md  px-4 py-1">
+          回上頁繼續加購
+      </RouterLink>
       <button type="button" class="flex justify-center items-center bg-[#50468c] rounded-md px-4 py-1" @click="submitCart()">
         確認購買
       </button>

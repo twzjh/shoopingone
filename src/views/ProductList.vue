@@ -31,11 +31,9 @@ export default {
     .then(respose => respose.json())
     .then(data => {
       this.products = data;
-      console.log(this.products);
     })
   },
   methods: {
-
   },
 };
 </script>
@@ -58,7 +56,7 @@ export default {
     <!-- 卡片式列表 -->
     <section class="flex gap-5 flex-wrap justify-center">
       <div v-for="(products, index) in products" :key="index" class="w-1/2 xl:w-1/6 border-[1px] rounded-lg flex flex-col md:w-1/3">
-        <img class="rounded-t-lg w-full" src="" alt="商品圖片" />
+        <img class="rounded-t-lg w-full" src="https://fakeimg.pl/300/" alt="商品圖片" />
 
         <div class="bg-slate-100 h-[250px] bg-opacity-30 px-3 flex flex-col gap-3 pt-3">
           <h2>{{ products.name }}</h2>
@@ -71,7 +69,7 @@ export default {
           <CountButton class="w-[150px] h-[35px]" />
         </div>
 
-        <button type="button"
+        <button type="button" @click="addValue()"
           class="flex justify-center items-center gap-x-2 bg-[#50468c] text-white rounded-b-lg px-4 py-1">
           <img :src="imgIcon.iconShoppingCart" alt="購物車圖示" width="20">
           <span>加入購物車</span>

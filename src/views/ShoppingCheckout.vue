@@ -30,7 +30,7 @@ export default {
       <div>
         <div class="grid grid-cols-4 py-1 border-b min-h-[80px] gap-x-3 md:gap-x-1 lg:first:border-t">
           <div class="flex justify-center">
-            <img src="" alt="商品圖示" class="w-[100px] h-full object-cover" />
+            <img src="https://fakeimg.pl/300/" alt="商品圖示" class="w-[100px] h-full object-cover" />
           </div>
           <p class="flex items-center">Bytecard</p>
           <p class="flex justify-center items-center">$ 954</p>
