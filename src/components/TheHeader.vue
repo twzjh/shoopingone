@@ -7,7 +7,14 @@ export default {
   data() {
     return {
       iconShoppingCart,
+      cart: [],
     };
+  },
+  mounted() {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+        this.cart = JSON.parse(savedCart);
+    }
   },
   methods: {
 
@@ -24,7 +31,7 @@ export default {
       <RouterLink to="/shopping-cart" title="前往購物車頁面(跳轉頁面)">
         <img class="w-[30px]" :src="iconShoppingCart" alt="購物車圖示" />
       </RouterLink>
-      <div class="absolute top-0 z-10 right-[17px] w-[16px] h-[16px] flex justify-center items-center rounded-full bg-red-600">0</div>
+      <div class="absolute top-0 z-10 right-[17px] w-[16px] h-[16px] flex justify-center items-center rounded-full bg-red-600">{{ cart.length }}</div>
     </div>
   </header>
 </template>

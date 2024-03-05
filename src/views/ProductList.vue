@@ -25,16 +25,31 @@ export default {
       },
       products:[],
       productList:'card',
+      cart:[],
     };
   },
   mounted(){
+  //抓取購物車列表資料
     fetch('./src/assets/json/MOCK_DATA.json')
     .then(respose => respose.json())
     .then(data => {
       this.products = data;
-    })
+    });
+
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+        this.cart = JSON.parse(savedCart);
+    }
+
   },
+  
   methods: {
+    // 新增加入購物車方法
+    addToCart(product) {
+    this.cart.push(product);
+    // 將購物車數據保存到 localStorage 中
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+    },
   },
 };
 </script>
@@ -70,7 +85,7 @@ export default {
           <CountButton class="w-[150px] h-[35px]" />
         </div>
 
-        <button type="button" @click="addValue()"
+        <button type="button" @click="addToCart(products)"
           class="flex justify-center items-center gap-x-2 bg-[#50468c] text-white rounded-b-lg px-4 py-1">
           <img :src="imgIcon.iconShoppingCart" alt="購物車圖示" width="20">
           <span>加入購物車</span>
