@@ -24,6 +24,7 @@ export default {
         iconListGrey,
       },
       products:[],
+      productList:'card',
     };
   },
   mounted(){
@@ -43,18 +44,18 @@ export default {
 
     <!-- 切換列表呈現 -->
     <nav class="flex justify-end items-center">
-      <button type="button">
+      <button type="button" @click="productList='card'">
         <img :src="imgIcon.iconMesh" alt="卡片顯示">
-        <img :src="imgIcon.iconMeshGrey" alt="卡片顯示(灰)">
+        <!-- <img :src="imgIcon.iconMeshGrey" alt="卡片顯示(灰)"> -->
       </button>
-      <button type="button">
+      <button type="button" @click="productList='list'"> 
         <img :src="imgIcon.iconList" alt="條列顯示">
-        <img :src="imgIcon.iconListGrey" alt="條列顯示(灰)">
+        <!-- <img :src="imgIcon.iconListGrey" alt="條列顯示(灰)"> -->
       </button>
     </nav>
 
     <!-- 卡片式列表 -->
-    <section class="flex gap-5 flex-wrap justify-center">
+    <section class="flex gap-5 flex-wrap justify-center" v-if="productList == 'card'">
       <div v-for="(products, index) in products" :key="index" class="w-1/2 xl:w-1/6 border-[1px] rounded-lg flex flex-col md:w-1/3">
         <img class="rounded-t-lg w-full" src="https://fakeimg.pl/300/" alt="商品圖片" />
 
@@ -78,20 +79,20 @@ export default {
     </section>
 
     <!-- 條列式列表 -->
-    <!-- <section class="px-32">
-      <div class="grid grid-cols-5 border-y font-bold py-1 gap-x-3">
+    <section class="px-32" v-else-if="productList == 'list'">
+      <div class="grid grid-cols-5 border-y font-bold py-1 gap-x-3" >
         <div class="text-center">商品圖片</div>
         <div>商品名稱</div>
         <div class="text-center">商品描述</div>
         <div class="text-center">價錢</div>
-        <div>操作</div>
+        <div></div>
       </div>
 
-      <div class="grid grid-cols-5 py-1 border-b min-h-[80px] gap-x-3 lg:first:border-t lg:!py-3">
-        <img src="" alt="商品圖示" class="h-full object-cover">
-        <div class="flex items-center">Bytecard</div>
-        <div class="flex items-center">Immunization not carried out because of caregiver refusal</div>
-        <div class="flex justify-center items-center">$ 954</div>
+      <div class="grid grid-cols-5 py-1 border-b min-h-[80px] gap-x-3 lg:first:border-t lg:!py-3" v-for="(products, index) in products" :key="index">
+        <img class="rounded-t-lg w-full" src="https://fakeimg.pl/300/" alt="商品圖片" />
+        <div class="flex items-center">{{ products.name }}</div>
+        <div class="flex items-center">{{ products.description }}</div>
+        <div class="flex justify-center items-center">${{ products.price }}</div>
         <div class="flex justify-center items-center lg:flex-wrap lg:!justify-between lg:pt-6 md:!pt-0">
           <div class="flex flex-col gap-y-4">
             <CountButton class="w-[150px] h-[35px]" />
@@ -103,6 +104,6 @@ export default {
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
   </div>
 </template>
